@@ -3,14 +3,17 @@
     namespace Tests;
 
     use BrokenTitan\MParticle\Channels\MParticleChannel;
+    use Illuminate\Support\Facades\Http;
+    use Mockery;
     use PHPUnit\Framework\TestCase;
 
     class MParticleChannelTest extends TestCase {
         protected $channel;
 
         public function setUp(): void {
-            $this->channel = new MParticleChannel;
-            $this->notifiable = new TestNotifiable;
+            parent::setUp();
+            $http = Mockery::mock(Http::class);
+            $this->channel = new MParticlChannel($http);
         }
 
         public function testSendEvent() {
