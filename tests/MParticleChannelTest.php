@@ -2,7 +2,7 @@
 
     namespace Tests;
 
-    use BrokenTitan\Klaviyo\Channels\MParticleChannel;
+    use BrokenTitan\MParticle\Channels\MParticleChannel;
     use PHPUnit\Framework\TestCase;
 
     class MParticleChannelTest extends TestCase {
