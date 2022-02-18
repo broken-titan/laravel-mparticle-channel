@@ -42,7 +42,7 @@ Once installation is complete, you can send events to mParticle by creating stan
             return [MParticleChannel::class];
         }
 
-        public function toMParticle($notifiable) : MParticleTrackMessage {
+        public function toMParticle($notifiable) : MParticleEventMessage {
             $data = [
                 "property" => "value"
             ];
