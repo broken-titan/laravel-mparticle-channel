@@ -53,11 +53,10 @@ Once installation is complete, you can send events to mParticle by creating stan
 ```
 You will also want to define a routeNotificationForMParticle() function on your Notifiable classes. They need to return an array with user identities that you want to send. For example:
 
+```
 public function routeNotificationForMParticle() {
     return ["customer_id" => 123, "email" => "example@domain.com"];
 }
-```
-
 ```
 ## Testing
 
