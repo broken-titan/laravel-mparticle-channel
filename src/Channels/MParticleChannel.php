@@ -23,6 +23,7 @@
                     ]
                 ],
                 "environment" => $environment,
+                "user_attributes" => $message->userAttributes,
                 "user_identities" => $userIdentites
             ];
             

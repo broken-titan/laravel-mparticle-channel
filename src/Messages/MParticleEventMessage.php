@@ -7,6 +7,7 @@
 	class MParticleEventMessage {
 		public array $data;
 		public string $event_type = "custom_event";
+		public array $userAttributes = [];
 
 		const ATTRIBUTION = "attribution";
 		const LOCATION = "location";
@@ -30,5 +31,11 @@
 
 		public static function create(string $event_name, string $custom_event_type, array $data = [], ?DateTimeInterface $time = null) : self {
 	        return new static($event_name, $custom_event_type, $data, $time);
+	    }
+
+	    public function userAttributes(array $attributes) {
+	    	$this->userAttributes = $attributes;
+
+	    	return $this;
 	    }
 	}
