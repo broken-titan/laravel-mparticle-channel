@@ -23,9 +23,12 @@
                     ]
                 ],
                 "environment" => $environment,
-                "user_attributes" => $message->userAttributes,
                 "user_identities" => $userIdentites
             ];
+
+            if (!empty($message->userAttributes)) {
+                $payload["user_attributes"] = $message->userAttributes;
+            }
             
             $pod = config("services.mparticle.pod");
             $request = Http::baseUrl("https://s2s.{$pod}.mparticle.com/v2/")
