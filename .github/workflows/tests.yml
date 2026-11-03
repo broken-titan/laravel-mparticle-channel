@@ -11,9 +11,9 @@ jobs:
         runs-on: ubuntu-latest
         name: Run tests
         steps:
-            -   uses: actions/checkout@v2
+            -   uses: actions/checkout@v4
             -   name: "Installing php"
-                uses: shivammathur/setup-php@v2
+                uses: shivammathur/setup-php@2.40.0
                 with:
                     php-version: '7.4'
                     extensions: curl,mbstring,xdebug
@@ -23,12 +23,12 @@ jobs:
                 run: php -v && composer -V
             -   name: Download Composer cache dependencies from cache
                 id: composer-cache
-                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+                run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
             -   name: Cache Composer dependencies
-                uses: actions/cache@v1
+                uses: actions/cache@v4
                 with:
                     path: ${{ steps.composer-cache.outputs.dir }}
-                    key: composer-${{ hashFiles('**/composer.json') }}
+                    key: composer-${{ hashFiles('**/composer.lock') }}
                     restore-keys: composer-
             -   name: Install dependencies
                 run: |
